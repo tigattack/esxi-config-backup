@@ -24,7 +24,8 @@ docker run \
 
 ## Environment Variables
 
-| Environment Variable | Default Value  | Info                                                                                                                                           |
-|----------------------|----------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| `BACKUP_DIRECTORY`   | `/app/backups` | Supported in Jinja2 mode only.                                                                                                                 |
-| `DEBUG`              | `false`        | Disables `no_log` on the Ansible task. Useful to discover why a backup is failing.<br>Secrets WILL be shown in logs if enabled and a task fails. |
+| Environment Variable  | Default Value  | Info                                                                                                                                           |
+|-----------------------|----------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| `BACKUP_DIRECTORY`    | `/app/backups` | Supported in Jinja2 mode only.                                                                                                                 |
+| `VALIDATE_HOST_CERTS` | `true`         | Validate ESXi host(s) SSL certificates.                                                                                                        |
+| `DEBUG`               | `false`        | Disables `no_log` on the Ansible task. Useful to discover why backup is failing.<br>Secrets WILL be shown in logs if enabled and a task fails. |
