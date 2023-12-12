@@ -28,4 +28,3 @@ docker run \
 |-----------------------|----------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 | `BACKUP_DIRECTORY`    | `/app/backups` | Supported in Jinja2 mode only.                                                                                                                 |
 | `VALIDATE_HOST_CERTS` | `true`         | Validate ESXi host(s) SSL certificates.                                                                                                        |
-| `DEBUG`               | `false`        | Disables `no_log` on the Ansible task. Useful to discover why backup is failing.<br>Secrets WILL be shown in logs if enabled and a task fails. |

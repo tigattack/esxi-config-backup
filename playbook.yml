@@ -16,5 +16,3 @@
       loop: "{{ esxi_hosts }}"
       loop_control:
         label: "{{ item.hostname }}"
-      # Hide log output unless DEBUG=true as it will contain secrets.
-      no_log: "{{ not lookup('ansible.builtin.env', 'DEBUG') | bool }}"

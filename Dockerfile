@@ -12,7 +12,6 @@ ENV ANSIBLE_INVENTORY_UNPARSED_WARNING=False
 
 ENV BACKUP_DIRECTORY="${BASEDIR}/backups"
 ENV VALIDATE_HOST_CERTS=true
-ENV DEBUG=False
 
 RUN groupadd --gid $USER_GID $USERNAME &&\
     useradd --uid $USER_UID --gid $USER_GID -d ${BASEDIR} $USERNAME && ls -l /home
