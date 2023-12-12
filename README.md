@@ -18,7 +18,7 @@ docker build . -t esxi-config-backup
 docker run \
   --rm \
   -v backups:/app/backups \
-  -v config.yml:/app/config.yml
+  -v ./config.yml:/app/config.yml
   esxi-config-backup
 ```
 
