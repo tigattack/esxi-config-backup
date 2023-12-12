@@ -1,0 +1,6 @@
+---
+
+esxi_hosts:
+  - hostname: host.local
+    username: root
+    password: password

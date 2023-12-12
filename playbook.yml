@@ -1,0 +1,20 @@
+---
+
+- name: ESXi Config Backup
+  hosts: localhost
+  gather_facts: false
+  vars_files: [config.yml]
+  tasks:
+    - name: Backup ESXi config
+      community.vmware.vmware_cfg_backup:
+        hostname: "{{ item.hostname }}"
+        username: "{{ item.username }}"
+        password: "{{ item.password }}"
+        dest: "{{ lookup('ansible.builtin.env', 'BACKUP_DIRECTORY') }}"
+        validate_certs: "{{ validate_host_certs | default(omit) }}"
+        state: saved
+      loop: "{{ esxi_hosts }}"
+      loop_control:
+        label: "{{ item.hostname }}"
+      # Hide log output unless DEBUG=true as it will contain secrets.
+      no_log: "{{ not lookup('ansible.builtin.env', 'DEBUG') | bool | default(false) }}"
