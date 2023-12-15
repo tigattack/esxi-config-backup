@@ -1,5 +1,9 @@
 ---
 
+# Any backups older than this number of days will be removed.
+# 0 = Disabled
+backup_retention_days: 0
+
 # Allows connection when SSL certificates are not valid.
 # Set to 'false' when host certificates are not trusted.
 validate_host_certs: true

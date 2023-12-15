@@ -4,13 +4,28 @@
   hosts: localhost
   gather_facts: false
   vars_files: [config.yml]
+
+  pre_tasks:
+    - name: Gather datetime information
+      ansible.builtin.setup:
+        gather_subset: [date_time]
+
+    - name: Construct filename
+      ansible.builtin.set_fact:
+        backup_filename: >-
+          {{ [
+              backup_directory,
+              'configBundle-HOSTNAME-' + ansible_date_time['iso8601'] | replace(':','') | replace('-','') + '.tgz'
+            ] | path_join 
+          }}
+
   tasks:
     - name: Backup ESXi config
       community.vmware.vmware_cfg_backup:
         hostname: "{{ item.hostname }}"
         username: "{{ item.username }}"
         password: "{{ item.password }}"
-        dest: "{{ backup_directory }}"
+        dest: "{{ backup_filename | replace('HOSTNAME', item.hostname) }}"
         validate_certs: "{{ validate_host_certs | default(true) | bool }}"
         state: saved
       loop: "{{ esxi_hosts }}"
