@@ -11,7 +11,7 @@ Scheduling a backup with this image could be achieved using something as simple 
 
 ## Run
 
-1. Create a copy of `config.example.yml` called `config.yml` and fill out your host(s) details.
+1. Create a copy of `config.example.yml` called `config.yml` and modify it to your requirements.
 
 2. Start the container
     ```shell

@@ -31,3 +31,23 @@
       loop: "{{ esxi_hosts }}"
       loop_control:
         label: "{{ item.hostname }}"
+
+  post_tasks:
+    - name: Expired backup cleanup
+      when: backup_retention_days | default(0) > 0
+      block:
+        - name: Find backups older than desired retention
+          ansible.builtin.find:
+            paths: "{{ backup_directory }}"
+            patterns: [configBundle-*.tgz]
+            file_type: file
+            age: "{{ backup_retention_days }}d"
+          register: old_backups
+
+        - name: Remove backups older than desired retention
+          ansible.builtin.file:
+            path: "{{ item.path }}"
+            state: absent
+          loop: "{{ old_backups.files }}"
+          loop_control:
+            label: "{{ item.path }}"
