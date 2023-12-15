@@ -10,8 +10,8 @@
         hostname: "{{ item.hostname }}"
         username: "{{ item.username }}"
         password: "{{ item.password }}"
-        dest: "{{ lookup('ansible.builtin.env', 'BACKUP_DIRECTORY') }}"
-        validate_certs: "{{ lookup('ansible.builtin.env', 'VALIDATE_HOST_CERTS') | bool }}"
+        dest: "{{ backup_directory }}"
+        validate_certs: "{{ validate_host_certs | default(true) | bool }}"
         state: saved
       loop: "{{ esxi_hosts }}"
       loop_control:

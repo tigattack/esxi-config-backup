@@ -30,13 +30,3 @@ Scheduling a backup with this image could be achieved using something as simple 
 This example assumes that `/opt/esxi-backup` exists, containing a `backups` directory and your `config.yml` (per step 1 in the [Run](#run) section above)
 
 `0 0 * * * docker run --rm -v /opt/esxi-backup/backups:/app/backups -v /opt/esxi-backup/config.yml:/app/config.yml ghcr.io/tigattack/esxi-config-backup`
-
-## Environment Variables
-
-| Environment Variable  | Default Value  | Info                                    |
-|-----------------------|----------------|-----------------------------------------|
-| `BACKUP_DIRECTORY`    | `/app/backups` | Supported in Jinja2 mode only.          |
-| `VALIDATE_HOST_CERTS` | `true`         | Validate ESXi host(s) SSL certificates. |
-
-> [!TIP]
-> Specify in the `docker run` command with `-e <variable>=<value>` , e.g. `docker run -e VALIDATE_HOST_CERTS=false [...]`
