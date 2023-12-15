@@ -22,7 +22,8 @@ Scheduling a backup with this image could be achieved using something as simple 
       ghcr.io/tigattack/esxi-config-backup
     ```
 
-Note: The `--rm` flag in the `docker run` command means the container will be removed once the task succeeds. This is fine, since the backup is a one-shot action.
+> [!NOTE]  
+> The `--rm` flag in the `docker run` command means the container will be removed once the task succeeds. This is fine, since the backup is a one-shot action.
 
 ### Cron Schedule Example
 
@@ -37,4 +38,5 @@ This example assumes that `/opt/esxi-backup` exists, containing a `backups` dire
 | `BACKUP_DIRECTORY`    | `/app/backups` | Supported in Jinja2 mode only.          |
 | `VALIDATE_HOST_CERTS` | `true`         | Validate ESXi host(s) SSL certificates. |
 
-**Tip:** Specify in the `docker run` command with `-e <variable>=<value>` , e.g. `docker run -e VALIDATE_HOST_CERTS=false [...]`
+> [!TIP]
+> Specify in the `docker run` command with `-e <variable>=<value>` , e.g. `docker run -e VALIDATE_HOST_CERTS=false [...]`
