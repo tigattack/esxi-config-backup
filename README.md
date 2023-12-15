@@ -17,8 +17,8 @@ Scheduling a backup with this image could be achieved using something as simple 
     ```shell
     docker run \
       --rm \
-      -v backups:/app/backups \
-      -v ./config.yml:/app/config.yml
+      -v ${PWD}/backups:/app/backups \
+      -v ${PWD}/config.yml:/app/config.yml
       ghcr.io/tigattack/esxi-config-backup
     ```
 
@@ -27,6 +27,8 @@ Scheduling a backup with this image could be achieved using something as simple 
 
 ### Cron Schedule Example
 
-This example assumes that `/opt/esxi-backup` exists, containing a `backups` directory and your `config.yml` (per step 1 in the [Run](#run) section above)
+The example below assumes that `/opt/esxi-backup` exists, containing a `backups` directory and your `config.yml` (per step 1 in the [Run](#run) section above)
+
+Create a backup once a day at midnight:
 
 `0 0 * * * docker run --rm -v /opt/esxi-backup/backups:/app/backups -v /opt/esxi-backup/config.yml:/app/config.yml ghcr.io/tigattack/esxi-config-backup`
