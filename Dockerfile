@@ -19,6 +19,6 @@ RUN pip install --no-cache-dir -r requirements.txt &&\
     ansible-galaxy install -r requirements.yml &&\
     mkdir backups
 
-VOLUME [ "${BACKUP_DIRECTORY}", "${BASEDIR}/backups"
+VOLUME [ "${BACKUP_DIRECTORY}", "${BASEDIR}/backups" ]
 
 ENTRYPOINT [ "ansible-playbook", "playbook.yml" ]
