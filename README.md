@@ -18,7 +18,7 @@ Scheduling a backup with this image could be achieved using something as simple 
     docker run \
       --rm \
       -v ${PWD}/backups:/app/backups \
-      -v ${PWD}/config.yml:/app/config.yml
+      -v ${PWD}/config.yml:/app/config.yml \
       ghcr.io/tigattack/esxi-config-backup
     ```
 
