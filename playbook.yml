@@ -16,7 +16,7 @@
           {{ [
               backup_directory,
               'configBundle-HOSTNAME-' + ansible_date_time['iso8601'] | replace(':','') | replace('-','') + '.tgz'
-            ] | path_join 
+            ] | path_join
           }}
 
   tasks:
