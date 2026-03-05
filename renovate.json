@@ -6,13 +6,7 @@
   "packageRules": [
     {
       "matchManagers": ["ansible-galaxy", "dockerfile", "github-actions"],
-      "matchPackageNames": ["ansible-lint"],
       "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true
-    },
-    {
-      "matchManagers": ["pip_requirements"],
-      "matchUpdateTypes": ["patch"],
       "automerge": true
     }
   ]
